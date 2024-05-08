@@ -1,6 +1,6 @@
 ﻿namespace API.Extensions
 {
-    public class test
+    public class Test
     {
     }
 }
