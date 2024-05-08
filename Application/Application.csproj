@@ -16,4 +16,12 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Warehouses\" />
+    <Folder Include="Products\" />
+    <Folder Include="Shipments\" />
+    <Folder Include="PickLists\" />
+    <Folder Include="Orders\" />
+  </ItemGroup>
+
 </Project>
