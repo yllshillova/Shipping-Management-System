@@ -8,9 +8,9 @@ namespace Infrastructure.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.ToTable("Products");
-
-            builder.HasKey(p => p.Id);
+            builder.Property(oi => oi.Price)
+                  .HasPrecision(18, 2)
+                  .IsRequired();
         }
     }
 }

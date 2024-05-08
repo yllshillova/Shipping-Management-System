@@ -8,8 +8,8 @@ namespace Infrastructure.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Warehouse> builder)
         {
-            builder.Property(w => w.Name).IsRequired();
-            builder.Property(w => w.Location).IsRequired();
+           // builder.Property(w => w.Name).IsRequired();
+           // builder.Property(w => w.Location).IsRequired();
         }
     }
 }

@@ -17,8 +17,9 @@ namespace Infrastructure
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Shipment> Shipments { get; set; }
-        public DbSet<Address> ShippingAddresses { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
+        public DbSet<PickList> PickLists { get; set; }
+        public DbSet<PickListItem> PickListItems { get; set; }
 
     }
 }
