@@ -3,7 +3,6 @@ using AutoMapper;
 using FluentValidation;
 using MediatR;
 using Application.Costumers;
-using Application.Departments;
 using Domain.Contracts;
 using Domain.Entities;
 
@@ -21,7 +20,7 @@ namespace Application.Customers
             }
         }
 
-        public class CreateDepartmentCommandHandler(ICustomerRepository _customerRepository, IMapper _mapper) : IRequestHandler<CreateCustomerCommand, Result<Unit>>
+        public class CreateWarehouseCommandHandler(ICustomerRepository _customerRepository, IMapper _mapper) : IRequestHandler<CreateCustomerCommand, Result<Unit>>
         {
             public async Task<Result<Unit>> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
             {

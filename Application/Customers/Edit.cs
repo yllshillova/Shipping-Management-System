@@ -1,13 +1,12 @@
 ﻿using Application.Core;
-using Application.BaseValidators;
+using Application.Costumers;
 using AutoMapper;
 using Domain.Contracts;
+using Domain.Entities;
 using FluentValidation;
 using MediatR;
-using Domain.Entities;
-using Application.Costumers;
 
-namespace Application.Departments
+namespace Application.Customers
 {
     public class Edit
     {
@@ -27,6 +26,8 @@ namespace Application.Departments
             {
                 var customer = await _customerRepository.GetByIdAsync(request.Customer.Id);
                 if (customer is null) return Result<Unit>.Failure(ErrorType.NotFound, "No records could be found.");
+
+                request.Customer.CreatedAt = customer.CreatedAt;
 
                 _mapper.Map(request.Customer, customer);
                 customer.UpdatedAt = DateTime.Now;

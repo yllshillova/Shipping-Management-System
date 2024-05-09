@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using static Application.Costumers.List;
 using static Application.Customers.Create;
+using static Application.Customers.Delete;
 using static Application.Customers.Details;
-using static Application.Departments.Delete;
-using static Application.Departments.Edit;
+using static Application.Customers.Edit;
 
 namespace API.Controllers
 {

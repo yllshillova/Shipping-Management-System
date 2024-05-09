@@ -10,24 +10,24 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import toastNotify from "../../app/helpers/toastNotify";
 import useErrorHandler from "../../app/helpers/useErrorHandler";
-import { useDeleteCustomerMutation, useGetCustomersQuery } from "../../app/APIs/customerApi";
-import { Customer } from "../../app/models/customer";
 import Header from "../../app/layout/Header";
 import SidePanel from "../../app/layout/SidePanel";
-function CustomerList() {
-    const { data, isLoading, error } = useGetCustomersQuery(null);
-    const [deleteCustomer] = useDeleteCustomerMutation();
+import { useDeleteWarehouseMutation, useGetWarehousesQuery } from "../../app/APIs/warehouseApi";
+import { Warehouse } from "../../app/models/warehouse";
+function WarehouseList() {
+    const { data, isLoading, error } = useGetWarehousesQuery(null);
+    const [deleteWarehouse] = useDeleteWarehouseMutation();
     const navigate = useNavigate();
     const location = useLocation();
     let content;
 
 
 
-    const handleCustomerDelete = async (id: string) => {
-        const result = await deleteCustomer(id);
+    const handleWarehouseDelete = async (id: string) => {
+        const result = await deleteWarehouse(id);
 
         if ('data' in result) {
-            toastNotify("Customer Deleted Successfully", "success");
+            toastNotify("Warehouse Deleted Successfully", "success");
         }
         else if ('error' in result) {
             const error = result.error as FetchBaseQueryError;
@@ -49,22 +49,22 @@ function CustomerList() {
         content = <div>{(error.data as FetchBaseQueryError)}</div>;
     }
     else {
-        content = data.map((customer: Customer) => {
+        content = data.map((warehouse: Warehouse) => {
             return (
-                <tbody key={customer.id}>
+                <tbody key={warehouse.id}>
                     <TableRow>
-                        <TableCell>{customer.name}</TableCell>
-                        <TableCell>{customer.email} </TableCell>
-                        <TableCell>{customer.phone} </TableCell>
-                        <TableCell>{customer.shippingAddress} </TableCell>
-                        <ActionButton style={{ backgroundColor: "teal" }} onClick={() => navigate("/customer/" + customer.id)} >
+                        <TableCell>{warehouse.name}</TableCell>
+                        <TableCell>{warehouse.location} </TableCell>
+                        <TableCell>{new Date(warehouse.createdAt).toLocaleDateString()} </TableCell>
+                        <TableCell>{new Date(warehouse.updatedAt).toLocaleDateString()} </TableCell>
+                        <ActionButton style={{ backgroundColor: "teal" }} onClick={() => navigate("/warehouse/" + warehouse.id)} >
                             <FontAwesomeIcon icon={faInfo} />
                         </ActionButton>
-                        <ActionButton style={{ backgroundColor: "orange" }} onClick={() => navigate("/customer/update/" + customer.id)} >
+                        <ActionButton style={{ backgroundColor: "orange" }} onClick={() => navigate("/warehouse/update/" + warehouse.id)} >
                             <FontAwesomeIcon icon={faEdit} />
                         </ActionButton>
                         {/*TODO: add handler for delete*/}
-                        <ActionButton style={{ backgroundColor: "red" }} onClick={() => handleCustomerDelete(customer.id) }>
+                        <ActionButton style={{ backgroundColor: "red" }} onClick={() => handleWarehouseDelete(warehouse.id) }>
                             <FontAwesomeIcon icon={faTrashAlt} />
                         </ActionButton>
                     </TableRow>
@@ -79,8 +79,8 @@ function CustomerList() {
             <SidePanel />
             <OrdersTable>
                 <TableNav>
-                    <TableHeader>Customers List</TableHeader>
-                    <AddButton onClick={() => navigate("/customer/insert")}  >
+                    <TableHeader>Warehouses List</TableHeader>
+                    <AddButton onClick={() => navigate("/warehouse/insert")}  >
                         <FontAwesomeIcon icon={faAdd} />
                     </AddButton>
                 </TableNav>
@@ -88,9 +88,9 @@ function CustomerList() {
                     <thead>
                         <TableHead>
                             <TableHeaderCell>Name</TableHeaderCell>
-                            <TableHeaderCell>Email</TableHeaderCell>
-                            <TableHeaderCell>Phone</TableHeaderCell>
-                            <TableHeaderCell>Shipping Address</TableHeaderCell>
+                            <TableHeaderCell>Location</TableHeaderCell>
+                            <TableHeaderCell>Created At</TableHeaderCell>
+                            <TableHeaderCell>Updated At</TableHeaderCell>
                             <TableHeaderCell>Actions</TableHeaderCell>
                         </TableHead>
                     </thead>
@@ -101,4 +101,4 @@ function CustomerList() {
     );
 }
 
-export default CustomerList;
+export default WarehouseList;

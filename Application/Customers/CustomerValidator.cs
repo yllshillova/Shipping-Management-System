@@ -2,7 +2,7 @@
 using Application.Costumers;
 using FluentValidation;
 
-namespace Application.Departments
+namespace Application.Customers
 {
     public class CustomerValidator : AbstractValidator<CustomerDto>
     {
