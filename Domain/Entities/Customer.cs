@@ -8,6 +8,6 @@ namespace Domain.Entities
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public ShippingAddress ShippingAddress { get; set; }
+        public string ShippingAddress { get; set; }
     }
 }

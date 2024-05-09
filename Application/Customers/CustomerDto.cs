@@ -1,5 +1,4 @@
 ﻿using Application.Base;
-using Domain.Entities.OrderAggregate;
 
 namespace Application.Costumers
 {
@@ -8,6 +7,6 @@ namespace Application.Costumers
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public ShippingAddress ShippingAddress { get; set; }
+        public string ShippingAddress { get; set; }
     }
 }

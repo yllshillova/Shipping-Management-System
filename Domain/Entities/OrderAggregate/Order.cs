@@ -6,7 +6,7 @@ namespace Domain.Entities.OrderAggregate
     public class Order : EntityBase
     {
         public DateTime OrderDate { get; set; }
-        public ShippingAddress ShippingAddress { get; set; }
+        public string ShippingAddress { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public Guid CustomerId { get; set; }
         public Customer Customer { get; set; }
