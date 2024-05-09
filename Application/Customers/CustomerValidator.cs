@@ -14,7 +14,7 @@ namespace Application.Departments
                                 .SetValidator(new EmailValidator<CustomerDto, string>());
             RuleFor(d => d.Phone).SetValidator(new NotNullValidator<CustomerDto, string>())
                                           .Must(BeValidNumber).WithMessage("Invalid phone number. It should contain exactly 9 digits.");
-            RuleFor(d => d.ShippingAddress).SetValidator(new NotNullValidator<CustomerDto, object>());
+            RuleFor(d => d.ShippingAddress).SetValidator(new ShippingAddressValidator());
         }
 
         private bool BeValidNumber(string number)

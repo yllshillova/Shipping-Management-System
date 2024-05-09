@@ -24,13 +24,13 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateCustomer( CustomerDto Customer)
+        public async Task<IActionResult> CreateCustomer([FromForm] CustomerDto Customer)
         {
             return HandleResult(await Mediator.Send(new CreateCustomerCommand(Customer)));
         }
 
         [HttpPut("{Id}")]
-        public async Task<IActionResult> EditCustomer(Guid Id, CustomerDto Customer)
+        public async Task<IActionResult> EditCustomer(Guid Id,[FromForm] CustomerDto Customer)
         {
             Customer.Id = Id;
             return HandleResult(await Mediator.Send(new UpdateCustomerCommand(Customer)));

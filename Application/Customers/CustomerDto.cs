@@ -1,5 +1,5 @@
 ﻿using Application.Base;
-using Application.DTOs;
+using Domain.Entities.OrderAggregate;
 
 namespace Application.Costumers
 {
@@ -8,6 +8,6 @@ namespace Application.Costumers
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public ShippingAddressDto ShippingAddress { get; set; }
+        public ShippingAddress ShippingAddress { get; set; }
     }
 }
