@@ -20,7 +20,6 @@
     <Folder Include="DTOs\" />
     <Folder Include="Shipments\" />
     <Folder Include="PickLists\" />
-    <Folder Include="Orders\" />
   </ItemGroup>
 
 </Project>
