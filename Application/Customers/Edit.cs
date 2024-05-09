@@ -20,7 +20,7 @@ namespace Application.Customers
             }
         }
 
-        public class UpdateDepartmentCommandHandler(ICustomerRepository _customerRepository, IMapper _mapper) : IRequestHandler<UpdateCustomerCommand, Result<Unit>>
+        public class UpdateCustomerCommandHandler(ICustomerRepository _customerRepository, IMapper _mapper) : IRequestHandler<UpdateCustomerCommand, Result<Unit>>
         {
             public async Task<Result<Unit>> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
             {

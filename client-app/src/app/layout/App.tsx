@@ -8,13 +8,17 @@ import WarehouseDetails from "../../features/warehouses/WarehouseDetails"
 import WarehouseInsert from "../../features/warehouses/WarehouseInsert"
 import WarehouseUpdate from "../../features/warehouses/WarehouseUpdate"
 import NotFound from "../../features/errors/NotFound"
+import ProductList from "../../features/products/ProductList"
+import ProductDetails from "../../features/products/ProductDetails"
+import ProductInsert from "../../features/products/ProductInsert"
+import ProductUpdate from "../../features/products/ProductUpdate"
 
 function App() {
   return (
       <div>
           <div>
               <Routes>
-                  <Route path="/" element={<CustomerList />}></Route>
+                  <Route path="/" element={<WarehouseList />}></Route>
                   <Route path="/customers" element={<CustomerList />}></Route>
                   <Route path="/customer/:id" element={<CustomerDetails />}></Route>
                   <Route path="/customer/insert" element={<CustomerInsert />}></Route>
@@ -23,6 +27,10 @@ function App() {
                   <Route path="/warehouse/:id" element={<WarehouseDetails />}></Route>
                   <Route path="/warehouse/insert" element={<WarehouseInsert />}></Route>
                   <Route path="/warehouse/update/:id" element={<WarehouseUpdate />}></Route>
+                  <Route path="/products" element={<ProductList />}></Route>
+                  <Route path="/product/:id" element={<ProductDetails />}></Route>
+                  <Route path="/product/insert" element={<ProductInsert />}></Route>
+                  <Route path="/product/update/:id" element={<ProductUpdate />}></Route>
                   {<Route path="/not-found" element={<NotFound />}></Route>}
                   {<Route path="*" element={<Navigate replace to="/not-found" />} />}
               </Routes>

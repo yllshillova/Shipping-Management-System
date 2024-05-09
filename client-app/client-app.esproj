@@ -9,7 +9,6 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\app\APIs\" />
     <Folder Include="src\app\utility\" />
     <Folder Include="src\app\storage\redux\" />
   </ItemGroup>
