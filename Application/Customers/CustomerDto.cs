@@ -1,9 +1,8 @@
-﻿using Domain.Base;
-using Domain.Entities.OrderAggregate;
+﻿using Application.Base;
 
-namespace Domain.Entities
+namespace Application.Costumers
 {
-    public class Customer : EntityBase
+    public class CustomerDto : BaseEntityDto
     {
         public string Name { get; set; }
         public string Email { get; set; }

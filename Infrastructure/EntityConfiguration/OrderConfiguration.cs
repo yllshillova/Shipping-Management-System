@@ -20,16 +20,6 @@ namespace Infrastructure.EntityConfiguration
                    .HasForeignKey(o => o.CustomerId)
                    .IsRequired();
 
-            builder.OwnsOne(c => c.ShippingAddress, saBuilder =>
-            {
-                saBuilder.Property(sa => sa.FullName).IsRequired();
-                saBuilder.Property(sa => sa.Address1).IsRequired();
-                saBuilder.Property(sa => sa.Address2);
-                saBuilder.Property(sa => sa.City).IsRequired();
-                saBuilder.Property(sa => sa.State).IsRequired();
-                saBuilder.Property(sa => sa.Zip).IsRequired();
-                saBuilder.Property(sa => sa.Country).IsRequired();
-            });
         }
     }
 }
