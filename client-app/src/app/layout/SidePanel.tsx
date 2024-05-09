@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReceipt, faShapes, faUser, faWarehouse} from '@fortawesome/free-solid-svg-icons';
+import { faReceipt, faShapes, faTruck, faUser, faWarehouse} from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 function SidePanel() {
@@ -18,12 +18,16 @@ function SidePanel() {
     const handleOrderList = () => {
         navigate('/orders');
     }
+     const handleShipmentList = () => {
+        navigate('/shipments');
+    }
 
     const sideBarComponents = [
         { icon: faUser, label: 'Customers', onClick: handleCustomerList },
         { icon: faWarehouse, label: 'Warehouses', onClick: handleWarehouseList },
         { icon: faShapes, label: 'Products', onClick: handleProductList },
         { icon: faReceipt, label: 'Orders', onClick: handleOrderList },
+        { icon: faTruck, label: 'Shipments', onClick: handleShipmentList },
     ];
 
     return (

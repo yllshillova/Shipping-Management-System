@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHospital } from '@fortawesome/free-solid-svg-icons/faHospital';
 import { useNavigate } from 'react-router-dom';
+import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
     const navigate = useNavigate();
@@ -10,7 +10,7 @@ function Header() {
             <HeaderContainer>
                 <LogoContainer>
                     <Logo onClick={() => navigate('/')} >Dashboard</Logo>
-                    <MenuIcon icon={faHospital} />
+                    <MenuIcon icon={faWarehouse} />
                 </LogoContainer>
                 <MessageContainer> {"Name Surname"}
                     <UserImage>

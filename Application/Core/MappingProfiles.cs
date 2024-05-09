@@ -1,6 +1,7 @@
 ﻿using Application.Costumers;
 using Application.Orders;
 using Application.Products;
+using Application.Shipments;
 using Application.Warehouses;
 using AutoMapper;
 using Domain.Entities;
@@ -19,6 +20,8 @@ namespace Application.Core
                 .ReverseMap();
             CreateMap<Order, OrderDto>()
                .ReverseMap();
+            CreateMap<Shipment, ShipmentDto>()
+              .ReverseMap();
         }
     }
 }
