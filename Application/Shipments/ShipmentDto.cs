@@ -2,7 +2,7 @@
 
 namespace Application.Shipments
 {
-    public class ShipmentDto:BaseEntityDto
+    public class ShipmentDto : BaseEntityDto
     {
         public Guid OrderId { get; set; }
         public string Carrier { get; set; }

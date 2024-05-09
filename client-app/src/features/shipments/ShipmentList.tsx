@@ -12,22 +12,21 @@ import toastNotify from "../../app/helpers/toastNotify";
 import useErrorHandler from "../../app/helpers/useErrorHandler";
 import Header from "../../app/layout/Header";
 import SidePanel from "../../app/layout/SidePanel";
-import { useDeleteProductMutation, useGetProductsQuery } from "../../app/APIs/productApi";
-import { Product } from "../../app/models/product";
-function ProductList() {
-    const { data, isLoading, error } = useGetProductsQuery(null);
-    const [deleteProduct] = useDeleteProductMutation();
+import { useDeleteShipmentMutation, useGetShipmentsQuery } from "../../app/APIs/shipmentApi";
+import { Shipment } from "../../app/models/shipment";
+function ShipmentList() {
+    const { data, isLoading, error } = useGetShipmentsQuery(null);
+    const [deleteShipment] = useDeleteShipmentMutation();
     const navigate = useNavigate();
     const location = useLocation();
     let content;
 
 
-
-    const handleProductDelete = async (id: string) => {
-        const result = await deleteProduct(id);
+    const handleShipmentDelete = async (id: string) => {
+        const result = await deleteShipment(id);
 
         if ('data' in result) {
-            toastNotify("Product Deleted Successfully", "success");
+            toastNotify("Shipment Deleted Successfully", "success");
         }
         else if ('error' in result) {
             const error = result.error as FetchBaseQueryError;
@@ -41,30 +40,28 @@ function ProductList() {
     };
 
 
-
-
     if (isLoading) {
         content = <MainLoader />;
     } else if (error) {
         content = <div>{(error.data as FetchBaseQueryError)}</div>;
     }
     else {
-        content = data.map((product: Product) => {
+        content = data.map((shipment: Shipment) => {
             return (
-                <tbody key={product.id}>
+                <tbody key={shipment.id}>
                     <TableRow>
-                        <TableCell>{product.name}</TableCell>
-                        <TableCell>{product.description} </TableCell>
-                        <TableCell>{product.price} </TableCell>
-                        <TableCell>{product.stockLevel} </TableCell>
-                        <ActionButton style={{ backgroundColor: "teal" }} onClick={() => navigate("/product/" + product.id)} >
+                        <TableCell>{shipment.trackingNumber}</TableCell>
+                        <TableCell>{shipment.carrier} </TableCell>
+                        <TableCell>{shipment.shipmentStatus} </TableCell>
+                        <TableCell>{shipment.orderId} </TableCell>
+                        <ActionButton style={{ backgroundColor: "teal" }} onClick={() => navigate("/shipment/" + shipment.id)} >
                             <FontAwesomeIcon icon={faInfo} />
                         </ActionButton>
-                        <ActionButton style={{ backgroundColor: "orange" }} onClick={() => navigate("/product/update/" + product.id)} >
+                        <ActionButton style={{ backgroundColor: "orange" }} onClick={() => navigate("/shipment/update/" + shipment.id)} >
                             <FontAwesomeIcon icon={faEdit} />
                         </ActionButton>
                         {/*TODO: add handler for delete*/}
-                        <ActionButton style={{ backgroundColor: "red" }} onClick={() => handleProductDelete(product.id) }>
+                        <ActionButton style={{ backgroundColor: "red" }} onClick={() => handleShipmentDelete(shipment.id) }>
                             <FontAwesomeIcon icon={faTrashAlt} />
                         </ActionButton>
                     </TableRow>
@@ -79,18 +76,18 @@ function ProductList() {
             <SidePanel />
             <OrdersTable>
                 <TableNav>
-                    <TableHeader>Products List</TableHeader>
-                    <AddButton onClick={() => navigate("/product/insert")}  >
+                    <TableHeader>Shipments List</TableHeader>
+                    <AddButton onClick={() => navigate("/shipment/insert")}  >
                         <FontAwesomeIcon icon={faAdd} />
                     </AddButton>
                 </TableNav>
                 <Table>
                     <thead>
                         <TableHead>
-                            <TableHeaderCell>Name</TableHeaderCell>
-                            <TableHeaderCell>Description</TableHeaderCell>
-                            <TableHeaderCell>Price</TableHeaderCell>
-                            <TableHeaderCell>Stock Level</TableHeaderCell>
+                            <TableHeaderCell>Tracking Number</TableHeaderCell>
+                            <TableHeaderCell>Carrier</TableHeaderCell>
+                            <TableHeaderCell>Status</TableHeaderCell>
+                            <TableHeaderCell>Order ID</TableHeaderCell>
                             <TableHeaderCell>Actions</TableHeaderCell>
                         </TableHead>
                     </thead>
@@ -101,4 +98,4 @@ function ProductList() {
     );
 }
 
-export default ProductList;
+export default ShipmentList;

@@ -13,6 +13,7 @@ import { useCreateOrderMutation, useUpdateOrderMutation } from '../../app/APIs/o
 import { validDate } from '../../app/utility/validDate';
 import { useGetCustomersQuery } from '../../app/APIs/customerApi';
 import { Customer } from '../../app/models/customer';
+import { SD_OrderStatus } from '../../app/utility/SD';
 
 
 interface OrderFormProps {
@@ -28,6 +29,15 @@ const orderData: Order = {
     orderStatus: "",
     totalAmount: 0
 };
+
+
+const orderStatuses = [SD_OrderStatus.Pending,
+    SD_OrderStatus.Picked,
+    SD_OrderStatus.Shipped,
+    SD_OrderStatus.InTransit,
+    SD_OrderStatus.Delivered,
+    SD_OrderStatus.Cancelled,
+];
 
 function OrderForm({ id, data }: OrderFormProps) {
     const [orderInputs, setOrderInputs] = useState<Order>(data || orderData);
@@ -148,13 +158,18 @@ function OrderForm({ id, data }: OrderFormProps) {
                                 {customersError && <div style={{ color: 'red' }}>Error loading customers</div>}
                             </FormGroup>
                             <FormGroup>
-                                <Label>Order Status</Label>
-                                <Input
-                                    type="text"
-                                    name="status"
+                                <Select
+                                    name="orderStatus"
                                     value={orderInputs.orderStatus}
                                     onChange={handleOrderInput}
-                                />
+                                >
+                                    <option value="">Select Status</option>
+                                    {orderStatuses.map((orderStatus) => (
+                                        <option key={orderStatus} value={orderStatus}>
+                                            {orderStatus}
+                                        </option>
+                                    ))}
+                                </Select>
                             </FormGroup>
                             <FormGroup>
                                 <Label>Total Amount</Label>
