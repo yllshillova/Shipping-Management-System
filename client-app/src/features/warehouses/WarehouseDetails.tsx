@@ -4,18 +4,18 @@ import MainLoader from "../../app/common/MainLoader";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import useErrorHandler from "../../app/helpers/useErrorHandler";
 import { Attribute, Label, LeftContainer, MainContainer, SectionTitle, Value, WrapperContainer } from "../../app/common/styledComponents/details";
-import { useGetCustomerByIdQuery } from "../../app/APIs/customerApi";
 import Header from "../../app/layout/Header";
 import SidePanel from "../../app/layout/SidePanel";
+import { useGetWarehouseByIdQuery } from "../../app/APIs/warehouseApi";
 
 function isValidGuid(guid: string): boolean {
     const guidRegex = /^[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$/;
     return guidRegex.test(guid);
 }
 
-function CustomerDetails() {
+function WarehouseDetails() {
     const { id } = useParams();
-    const { data, isLoading, error, isError } = useGetCustomerByIdQuery(id);
+    const { data, isLoading, error, isError } = useGetWarehouseByIdQuery(id);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -32,7 +32,7 @@ function CustomerDetails() {
     if (isLoading) return <MainLoader />;
 
     if (data) {
-        const costumer = data;
+        const warehouse = data;
         return (
             <>
                 <Header />
@@ -40,29 +40,21 @@ function CustomerDetails() {
                 <MainContainer>
                     <WrapperContainer>
                         <LeftContainer>
-                            <SectionTitle>Details of : {costumer.name}</SectionTitle>
+                            <SectionTitle>Details of : {warehouse.name}</SectionTitle>
                             <Attribute>
                                 <Label>Name</Label>
-                                <Value>{costumer.name}</Value>
+                                <Value>{warehouse.name}</Value>
                             </Attribute>
                             <Attribute>
-                                <Label>Email</Label>
-                                <Value>{costumer.email}</Value>
-                            </Attribute>
-                            <Attribute>
-                                <Label>Phone</Label>
-                                <Value>{costumer.phone}</Value>
-                            </Attribute>
-                            <Attribute>
-                                <Label>Shipping Address</Label>
-                                <Value>{costumer.shippingAddress}</Value>
+                                <Label>Location</Label>
+                                <Value>{warehouse.location}</Value>
                             </Attribute>
                             <Attribute>
                                 <Label>Created At</Label>
-                                <Value>{costumer.createdAt}</Value>
+                                <Value>{warehouse.createdAt}</Value>
                             </Attribute><Attribute>
                                 <Label>Updated At</Label>
-                                <Value>{costumer.updatedAt}</Value>
+                                <Value>{warehouse.updatedAt}</Value>
                             </Attribute>
                         </LeftContainer>
                     </WrapperContainer>
@@ -91,5 +83,5 @@ function CustomerDetails() {
     return null;
 }
 
-export default CustomerDetails;
+export default WarehouseDetails;
 

@@ -1,6 +1,5 @@
 ﻿using Application.Core;
 using Application.Customers;
-using Application.Departments;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;

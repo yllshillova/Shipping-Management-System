@@ -24,6 +24,7 @@ namespace Application.Warehouses
                 var warehouse = await _warehouseRepository.GetByIdAsync(request.Warehouse.Id);
                 if (warehouse is null) return Result<Unit>.Failure(ErrorType.NotFound, "No records could be found.");
 
+                request.Warehouse.CreatedAt = warehouse.CreatedAt;
                 _mapper.Map(request.Warehouse, warehouse);
                 warehouse.UpdatedAt = DateTime.Now;
 
