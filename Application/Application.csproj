@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="DTOs\" />
-    <Folder Include="Warehouses\" />
     <Folder Include="Products\" />
     <Folder Include="Shipments\" />
     <Folder Include="PickLists\" />

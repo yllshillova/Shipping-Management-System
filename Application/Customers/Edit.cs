@@ -1,13 +1,11 @@
 ﻿using Application.Core;
-using Application.BaseValidators;
+using Application.Costumers;
 using AutoMapper;
 using Domain.Contracts;
 using FluentValidation;
 using MediatR;
-using Domain.Entities;
-using Application.Costumers;
 
-namespace Application.Departments
+namespace Application.Customers
 {
     public class Edit
     {

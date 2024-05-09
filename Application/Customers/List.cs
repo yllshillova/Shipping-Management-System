@@ -9,7 +9,7 @@ namespace Application.Costumers
     {
         public record GetCustomersQuery : IRequest<Result<IEnumerable<CustomerDto>>>;
 
-        public class GetCustomerQueryHandler(ICustomerRepository _customerRepository, IMapper _mapper) : IRequestHandler<GetCustomersQuery, Result<IEnumerable<CustomerDto>>>
+        public class GetCustomersQueryHandler(ICustomerRepository _customerRepository, IMapper _mapper) : IRequestHandler<GetCustomersQuery, Result<IEnumerable<CustomerDto>>>
         {
             public async Task<Result<IEnumerable<CustomerDto>>> Handle(GetCustomersQuery request, CancellationToken cancellationToken)
             {
