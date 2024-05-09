@@ -20,7 +20,7 @@ namespace Application.Customers
             }
         }
 
-        public class CreateWarehouseCommandHandler(ICustomerRepository _customerRepository, IMapper _mapper) : IRequestHandler<CreateCustomerCommand, Result<Unit>>
+        public class CreateCustomerCommandHandler(ICustomerRepository _customerRepository, IMapper _mapper) : IRequestHandler<CreateCustomerCommand, Result<Unit>>
         {
             public async Task<Result<Unit>> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
             {

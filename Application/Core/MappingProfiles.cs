@@ -9,12 +9,8 @@ namespace Application.Core
     {
         public MappingProfiles() {
             CreateMap<Customer, CustomerDto>()
-                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
-                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
                 .ReverseMap();
             CreateMap<Warehouse, WarehouseDto>()
-                //.ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
-                //.ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
                 .ReverseMap();
         }
     }
