@@ -9,6 +9,7 @@ import SidePanel from '../../app/layout/SidePanel';
 import { BackToButton, ButtonsContainer, Container, Form, FormContainer, FormGroup, Input, Label, OuterContainer, SubmitButton, Title } from '../../app/common/styledComponents/upsert';
 import { Product } from '../../app/models/product';
 import { useCreateProductMutation, useUpdateProductMutation } from '../../app/APIs/productApi';
+import inputHelper from '../../app/helpers/inputHelper';
 
 
 interface ProductFormProps {
@@ -32,28 +33,21 @@ function ProductForm({ id, data }: ProductFormProps) {
     const [loading, setLoading] = useState(false);
     const [errorMessages, setErrorMessages] = useState<string[]>([]);
 
-    const handleProductInput = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
+    const handleProductInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.target;
 
-        // Create a new state object based on the input
-        const newState: Partial<Product> = {};
-
-        if (name === 'price') {
-            // Convert the input value to a number
-            const parsedValue = parseFloat(value);
-
-            // If the parsed value is not a valid number, fallback to 0
-            if (!isNaN(parsedValue)) {
-                newState.price = parsedValue;
+        if (name === "price") {
+            const numericValue = parseFloat(value);
+            if (!isNaN(numericValue)) {
+                setProductInputs(prevState => ({
+                    ...prevState,
+                    [name]: numericValue
+                }));
             }
         } else {
-            newState[name] = value;
+            const tempData = inputHelper(e, productInputs);
+            setProductInputs(tempData);
         }
-
-        setProductInputs(prevState => ({
-            ...prevState,
-            ...newState
-        }));
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
