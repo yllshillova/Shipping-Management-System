@@ -12,6 +12,10 @@ import ProductList from "../../features/products/ProductList"
 import ProductDetails from "../../features/products/ProductDetails"
 import ProductInsert from "../../features/products/ProductInsert"
 import ProductUpdate from "../../features/products/ProductUpdate"
+import OrderList from "../../features/orders/OrderList"
+import OrderDetails from "../../features/orders/OrderDetails"
+import OrderInsert from "../../features/orders/OrderInsert"
+import OrderUpdate from "../../features/orders/OrderUpdate"
 
 function App() {
   return (
@@ -31,6 +35,10 @@ function App() {
                   <Route path="/product/:id" element={<ProductDetails />}></Route>
                   <Route path="/product/insert" element={<ProductInsert />}></Route>
                   <Route path="/product/update/:id" element={<ProductUpdate />}></Route>
+                  <Route path="/orders" element={<OrderList />}></Route>
+                  <Route path="/order/:id" element={<OrderDetails />}></Route>
+                  <Route path="/order/insert" element={<OrderInsert />}></Route>
+                  <Route path="/order/update/:id" element={<OrderUpdate />}></Route>
                   {<Route path="/not-found" element={<NotFound />}></Route>}
                   {<Route path="*" element={<Navigate replace to="/not-found" />} />}
               </Routes>

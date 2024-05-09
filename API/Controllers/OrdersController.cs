@@ -24,7 +24,7 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrder([FromForm] OrderDto Order)
+        public async Task<IActionResult> CreateOrder( OrderDto Order)
         {
             return HandleResult(await Mediator.Send(new CreateOrderCommand(Order)));
         }

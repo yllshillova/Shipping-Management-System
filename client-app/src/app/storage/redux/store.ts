@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import customerApi from "../../APIs/customerApi";
 import warehouseApi from "../../APIs/warehouseApi";
 import productApi from "../../APIs/productApi";
+import orderApi from "../../APIs/orderApi";
 
 const store = configureStore({
     reducer: {
         [customerApi.reducerPath]: customerApi.reducer,
         [warehouseApi.reducerPath]: warehouseApi.reducer,
         [productApi.reducerPath]: productApi.reducer,
+        [orderApi.reducerPath]: orderApi.reducer,
     },
 
     middleware: (getDefaultMiddleware) =>
@@ -15,6 +17,7 @@ const store = configureStore({
             .concat(customerApi.middleware)
             .concat(warehouseApi.middleware)
             .concat(productApi.middleware)
+            .concat(orderApi.middleware)
 });
 
 //exporting the root state
