@@ -56,6 +56,7 @@ function CustomerList() {
                         <TableCell>{customer.name}</TableCell>
                         <TableCell>{customer.email} </TableCell>
                         <TableCell>{customer.phone} </TableCell>
+                        <TableCell>{customer.shippingAddress} </TableCell>
                         <ActionButton style={{ backgroundColor: "teal" }} onClick={() => navigate("/customer/" + customer.id)} >
                             <FontAwesomeIcon icon={faInfo} />
                         </ActionButton>
@@ -89,6 +90,7 @@ function CustomerList() {
                             <TableHeaderCell>Name</TableHeaderCell>
                             <TableHeaderCell>Email</TableHeaderCell>
                             <TableHeaderCell>Phone</TableHeaderCell>
+                            <TableHeaderCell>Shipping Address</TableHeaderCell>
                         </TableHead>
                     </thead>
                     {content}

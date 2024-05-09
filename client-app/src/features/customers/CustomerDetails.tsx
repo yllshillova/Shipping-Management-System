@@ -53,6 +53,10 @@ function CustomerDetails() {
                                 <Label>Phone</Label>
                                 <Value>{department.phone}</Value>
                             </Attribute>
+                            <Attribute>
+                                <Label>Shipping Address</Label>
+                                <Value>{department.shippingAddress}</Value>
+                            </Attribute>
                         </LeftContainer>
                     </WrapperContainer>
 
