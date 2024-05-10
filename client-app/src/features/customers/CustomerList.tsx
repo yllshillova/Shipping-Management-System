@@ -1,4 +1,5 @@
-﻿/* eslint-disable react-hooks/rules-of-hooks */
+﻿/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainLoader from "../../app/common/MainLoader";
 import { TableCell, TableRow, ActionButton, OrdersTable, TableNav, TableHeader, AddButton, Table, TableHeaderCell, TableHead } from "../../app/common/styledComponents/table";
@@ -14,6 +15,7 @@ import { useDeleteCustomerMutation, useGetCustomersQuery } from "../../app/APIs/
 import { Customer } from "../../app/models/customer";
 import Header from "../../app/layout/Header";
 import SidePanel from "../../app/layout/SidePanel";
+import withAuth from "../../app/HOC/withAuth";
 function CustomerList() {
     const { data, isLoading, error } = useGetCustomersQuery(null);
     const [deleteCustomer] = useDeleteCustomerMutation();
@@ -101,4 +103,4 @@ function CustomerList() {
     );
 }
 
-export default CustomerList;
+export default withAuth(CustomerList);

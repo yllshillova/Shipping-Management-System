@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+import withAdminAuth from "../../app/HOC/withAdminManagerAuth";
 import ShipmentForm from "./ShipmentForm";
 
 function ShipmentInsert() {
@@ -6,4 +8,4 @@ function ShipmentInsert() {
     );
 }
 
-export default ShipmentInsert;
+export default withAdminAuth(ShipmentInsert);

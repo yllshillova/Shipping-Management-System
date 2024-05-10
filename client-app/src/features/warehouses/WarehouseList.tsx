@@ -1,4 +1,5 @@
-﻿/* eslint-disable react-hooks/rules-of-hooks */
+﻿/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainLoader from "../../app/common/MainLoader";
 import { TableCell, TableRow, ActionButton, OrdersTable, TableNav, TableHeader, AddButton, Table, TableHeaderCell, TableHead } from "../../app/common/styledComponents/table";
@@ -14,6 +15,7 @@ import Header from "../../app/layout/Header";
 import SidePanel from "../../app/layout/SidePanel";
 import { useDeleteWarehouseMutation, useGetWarehousesQuery } from "../../app/APIs/warehouseApi";
 import { Warehouse } from "../../app/models/warehouse";
+import withAuth from "../../app/HOC/withAdminManagerAuth";
 function WarehouseList() {
     const { data, isLoading, error } = useGetWarehousesQuery(null);
     const [deleteWarehouse] = useDeleteWarehouseMutation();
@@ -101,4 +103,4 @@ function WarehouseList() {
     );
 }
 
-export default WarehouseList;
+export default withAuth(WarehouseList);

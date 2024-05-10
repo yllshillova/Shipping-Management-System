@@ -1,4 +1,5 @@
-﻿/* eslint-disable react-hooks/rules-of-hooks */
+﻿/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainLoader from "../../app/common/MainLoader";
 import { TableCell, TableRow, ActionButton, OrdersTable, TableNav, TableHeader, AddButton, Table, TableHeaderCell, TableHead } from "../../app/common/styledComponents/table";
@@ -17,6 +18,7 @@ import { Order } from "../../app/models/order";
 import { useGetCustomersQuery } from "../../app/APIs/customerApi";
 import { Customer } from "../../app/models/customer";
 import MiniLoader from "../../app/common/MiniLoader";
+import withAuth from "../../app/HOC/withAuth";
 function OrderList() {
     const { data, isLoading, error } = useGetOrdersQuery(null);
     const { data: customers, isLoading: isCustomersLoading } = useGetCustomersQuery(null);
@@ -77,10 +79,6 @@ function OrderList() {
                         <ActionButton style={{ backgroundColor: "teal" }} onClick={() => navigate("/order/" + order.id)} >
                             <FontAwesomeIcon icon={faInfo} />
                         </ActionButton>
-                        <ActionButton style={{ backgroundColor: "orange" }} onClick={() => navigate("/order/update/" + order.id)} >
-                            <FontAwesomeIcon icon={faEdit} />
-                        </ActionButton>
-                        {/*TODO: add handler for delete*/}
                         <ActionButton style={{ backgroundColor: "red" }} onClick={() => handleOrderDelete(order.id) }>
                             <FontAwesomeIcon icon={faTrashAlt} />
                         </ActionButton>
@@ -118,4 +116,4 @@ function OrderList() {
     );
 }
 
-export default OrderList;
+export default withAuth(OrderList);
