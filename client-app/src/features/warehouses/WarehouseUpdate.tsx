@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useNavigate, useParams } from 'react-router-dom';
 import MainLoader from '../../app/common/MainLoader';
@@ -5,6 +6,7 @@ import useErrorHandler from '../../app/helpers/useErrorHandler';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import WarehouseForm from './WarehouseForm';
 import { useGetWarehouseByIdQuery } from '../../app/APIs/warehouseApi';
+import withAdminAuth from '../../app/HOC/withAdminManagerAuth';
 
 function WarehouseUpdate() {
     const { id } = useParams<{ id: string }>();
@@ -25,4 +27,4 @@ function WarehouseUpdate() {
     return <div>No Warehouse data available.</div>;
 }
 
-export default WarehouseUpdate;
+export default withAdminAuth(WarehouseUpdate);

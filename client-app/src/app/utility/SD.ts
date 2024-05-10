@@ -14,3 +14,8 @@ export enum SD_OrderStatus {
     Delivered = "Delivered",
     Cancelled = "Cancelled"
 }
+export enum SD_Roles {
+    ADMIN = "Admin",
+    MANAGER = "Manager",
+    EMPLOYER = "Employer",
+}

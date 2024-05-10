@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useNavigate, useParams } from 'react-router-dom';
 import MainLoader from '../../app/common/MainLoader';
@@ -5,6 +6,7 @@ import useErrorHandler from '../../app/helpers/useErrorHandler';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { useGetCustomerByIdQuery } from '../../app/APIs/customerApi';
 import CustomerForm from './CustomerForm';
+import withAdminAuth from '../../app/HOC/withAdminManagerAuth';
 
 function CustomerUpdate() {
     const { id } = useParams<{ id: string }>();
@@ -25,4 +27,4 @@ function CustomerUpdate() {
     return <div>No customer data available.</div>;
 }
 
-export default CustomerUpdate;
+export default withAdminAuth(CustomerUpdate);

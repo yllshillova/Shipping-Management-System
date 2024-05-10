@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+import withAdminAuth from "../../app/HOC/withAdminManagerAuth";
 import CustomerForm from "./CustomerForm";
 
 function CustomerInsert() {
@@ -6,4 +8,4 @@ function CustomerInsert() {
     );
 }
 
-export default CustomerInsert;
+export default withAdminAuth(CustomerInsert);

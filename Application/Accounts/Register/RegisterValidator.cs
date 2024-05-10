@@ -19,6 +19,9 @@ namespace Application.Accounts.Register
                 .SetValidator(new NotNullValidator<RegisterDto, string>())
                 .SetValidator(new ValidLengthValidator<RegisterDto, string>(4, 100));
 
+            RuleFor(d => d.Role)
+                .SetValidator(new NotNullValidator<RegisterDto, string>());
+
             RuleFor(d => d.UserName)
                 .SetValidator(new NotNullValidator<RegisterDto, string>())
                 .SetValidator(new ValidLengthValidator<RegisterDto, string>(4, 100))

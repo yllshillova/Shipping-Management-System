@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import MainLoader from "../../app/common/MainLoader";
@@ -7,6 +8,7 @@ import { Attribute, Label, LeftContainer, MainContainer, SectionTitle, Value, Wr
 import Header from "../../app/layout/Header";
 import SidePanel from "../../app/layout/SidePanel";
 import { useGetWarehouseByIdQuery } from "../../app/APIs/warehouseApi";
+import withAuth from "../../app/HOC/withAuth";
 
 function isValidGuid(guid: string): boolean {
     const guidRegex = /^[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$/;
@@ -83,5 +85,5 @@ function WarehouseDetails() {
     return null;
 }
 
-export default WarehouseDetails;
+export default withAuth(WarehouseDetails);
 

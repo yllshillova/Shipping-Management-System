@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useNavigate, useParams } from 'react-router-dom';
 import MainLoader from '../../app/common/MainLoader';
@@ -5,6 +6,7 @@ import useErrorHandler from '../../app/helpers/useErrorHandler';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import ProductForm from './ProductForm';
 import { useGetProductByIdQuery } from '../../app/APIs/productApi';
+import withAdminAuth from '../../app/HOC/withAdminManagerAuth';
 
 function ProductUpdate() {
     const { id } = useParams<{ id: string }>();
@@ -25,4 +27,4 @@ function ProductUpdate() {
     return <div>No Product data available.</div>;
 }
 
-export default ProductUpdate;
+export default withAdminAuth(ProductUpdate);

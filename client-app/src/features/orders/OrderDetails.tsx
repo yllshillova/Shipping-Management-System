@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import MainLoader from "../../app/common/MainLoader";
@@ -10,6 +11,7 @@ import { useGetOrderByIdQuery } from "../../app/APIs/orderApi";
 import { useGetCustomerByIdQuery } from "../../app/APIs/customerApi";
 import MiniLoader from "../../app/common/MiniLoader";
 import { formatDate, formatDateTimeLocal } from "../../app/utility/formatDate";
+import withAuth from "../../app/HOC/withAuth";
 
 function isValidGuid(guid: string): boolean {
     const guidRegex = /^[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$/;
@@ -90,5 +92,5 @@ function OrderDetails() {
     return null;
 }
 
-export default OrderDetails;
+export default withAuth(OrderDetails);
 

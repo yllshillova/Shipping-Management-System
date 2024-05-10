@@ -1,4 +1,5 @@
-﻿/* eslint-disable react-hooks/rules-of-hooks */
+﻿/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainLoader from "../../app/common/MainLoader";
 import { TableCell, TableRow, ActionButton, OrdersTable, TableNav, TableHeader, AddButton, Table, TableHeaderCell, TableHead } from "../../app/common/styledComponents/table";
@@ -14,6 +15,7 @@ import Header from "../../app/layout/Header";
 import SidePanel from "../../app/layout/SidePanel";
 import { useDeleteShipmentMutation, useGetShipmentsQuery } from "../../app/APIs/shipmentApi";
 import { Shipment } from "../../app/models/shipment";
+import withAuth from "../../app/HOC/withAuth";
 function ShipmentList() {
     const { data, isLoading, error } = useGetShipmentsQuery(null);
     const [deleteShipment] = useDeleteShipmentMutation();
@@ -98,4 +100,4 @@ function ShipmentList() {
     );
 }
 
-export default ShipmentList;
+export default withAuth(ShipmentList);

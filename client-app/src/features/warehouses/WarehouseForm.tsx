@@ -21,6 +21,8 @@ const warehouseData: Warehouse = {
     id: "",
     name: "",
     location: "",
+    createdAt: new Date(),
+    updatedAt: new Date()
 };
 
 function WarehouseForm({ id, data }: WarehouseFormProps) {
