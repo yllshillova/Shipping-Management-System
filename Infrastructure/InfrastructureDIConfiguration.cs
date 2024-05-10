@@ -21,13 +21,13 @@ namespace Infrastructure
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
-            services.AddScoped<IPickListRepository, PickListRepository>();
-            services.AddScoped<IPickListItemRepository, PickListItemRepository>();
+            services.AddScoped<IBasketRepository, BasketRepository>();
+            services.AddScoped<IBasketItemRepository, BasketItemRepository>();
             services.AddScoped<IShipmentRepository, ShipmentRepository>();
             services.AddScoped<IWarehouseRepository, WarehouseRepository>();
 
 
-            await MigrateDatabaseAndSeedData(services.BuildServiceProvider());
+            //await MigrateDatabaseAndSeedData(services.BuildServiceProvider());
 
         }
 

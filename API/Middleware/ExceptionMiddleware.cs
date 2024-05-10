@@ -11,6 +11,10 @@ namespace API.Middleware
         {
             try
             {
+                var userName = context.User?.Identity?.Name;
+
+                context.Items["UserName"] = userName;
+
                 await _next(context);
             }
             catch (Exception ex)

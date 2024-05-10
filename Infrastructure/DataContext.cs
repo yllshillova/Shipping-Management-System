@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Entities.OrderAggregate;
+using Infrastructure.EntityConfiguration;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
@@ -18,8 +19,23 @@ namespace Infrastructure
         public DbSet<Product> Products { get; set; }
         public DbSet<Shipment> Shipments { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
-        public DbSet<PickList> PickLists { get; set; }
-        public DbSet<PickListItem> PickListItems { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new BasketConfiguration());
+            modelBuilder.ApplyConfiguration(new BasketItemConfiguration());
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderItemConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new ShipmentConfiguration());
+            modelBuilder.ApplyConfiguration(new WarehouseConfiguration());
+        }
+
 
     }
 }

@@ -8,5 +8,6 @@ namespace Application.Products
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int StockLevel { get; set; }
+        public Guid WarehouseId { get; set; }
     }
 }
