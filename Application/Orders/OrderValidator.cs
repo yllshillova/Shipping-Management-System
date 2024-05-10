@@ -7,9 +7,6 @@ namespace Application.Orders
     {
         public OrderValidator()
         {
-            RuleFor(d => d.OrderDate).SetValidator(new NotNullValidator<OrderDto, DateTime>())
-               .Must(BeAValidDate).WithMessage("Invalid order date format.")
-                   .Must(BeInFuture).WithMessage("Order date must be in the future.");
             RuleFor(d => d.ShippingAddress).SetValidator(new NotNullValidator<OrderDto, string>())
                                 .SetValidator(new ValidLengthValidator<OrderDto, string>(2,50)); 
             RuleFor(d => d.TotalAmount)

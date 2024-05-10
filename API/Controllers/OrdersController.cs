@@ -24,9 +24,9 @@ namespace API.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrder([FromForm] OrderDto Order)
+        public async Task<IActionResult> CreateOrder(Guid basketId,OrderDto Order)
         {
-            return HandleResult(await Mediator.Send(new CreateOrderCommand(Order)));
+            return HandleResult(await Mediator.Send(new CreateOrderCommand(basketId,Order)));
         }
 
         [HttpPut("{Id}")]

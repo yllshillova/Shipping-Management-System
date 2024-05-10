@@ -10,10 +10,6 @@ namespace Infrastructure.EntityConfiguration
         {
             builder.Property(o => o.TotalAmount)
                    .HasPrecision(18, 2);
-            
-            builder.HasMany(o => o.Items)
-                   .WithOne(i => i.Order)
-                   .HasForeignKey(i => i.OrderId);
 
             builder.HasOne(o => o.Customer)
                    .WithMany()

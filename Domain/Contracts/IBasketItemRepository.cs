@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace Domain.Contracts
 {
-    public interface IPickListItemRepository : IEntityBaseRepository<PickListItem>
+    public interface IBasketItemRepository : IEntityBaseRepository<BasketItem>
     {
     }
 }

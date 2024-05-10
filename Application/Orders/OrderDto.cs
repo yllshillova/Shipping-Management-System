@@ -1,4 +1,5 @@
 ﻿using Application.Base;
+using Domain.Entities.OrderAggregate;
 
 namespace Application.Orders
 {
@@ -8,6 +9,7 @@ namespace Application.Orders
         public string ShippingAddress { get; set; }
         public string OrderStatus { get; set; }
         public decimal TotalAmount { get; set; }
+        public List<OrderItem> Items { get; set; } = new();
         public Guid CustomerId { get; set; }
     }
 }
