@@ -27,6 +27,7 @@ import { jwtDecode } from "jwt-decode"
 import { useDispatch } from "react-redux"
 import { setLoggedInUser, setToken } from "../storage/redux/userAuthSlice"
 import AccessDenied from "../../features/errors/AccessDenied"
+import { Dashboard } from "../../features/dashboard/Dashboard"
 
 function App() {
     const dispatch = useDispatch();
@@ -43,7 +44,7 @@ function App() {
         <div>
             <div>
                 <Routes>
-                    <Route path="/" element={<WarehouseList />}></Route>
+                    <Route path="/" element={<Dashboard />}></Route>
                     <Route path="/customers" element={<CustomerList />}></Route>
                     <Route path="/customer/:id" element={<CustomerDetails />}></Route>
                     <Route path="/customer/insert" element={<CustomerInsert />}></Route>
