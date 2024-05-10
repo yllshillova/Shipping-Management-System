@@ -11,14 +11,13 @@ namespace Application.Orders
 {
     public class Create
     {
-        public record CreateOrderCommand(Guid BasketId, OrderDto Order) : IRequest<Result<Unit>>;
+        public record CreateOrderCommand(CreateOrderDto Order) : IRequest<Result<Unit>>;
 
         public class CommandValidator : AbstractValidator<CreateOrderCommand>
         {
             public CommandValidator()
             {
-                RuleFor(d => d.BasketId).NotNull().WithMessage("BasketId can not be null!");
-                RuleFor(x => x.Order).SetValidator(new OrderValidator());
+                RuleFor(x => x.Order).SetValidator(new CreateOrderValidator());
             }
         }
         public class CreateOrderCommandHandler(
@@ -52,7 +51,9 @@ namespace Application.Orders
                         Quantity = basketItem.Quantity,
                         Price = basketItem.Price,
                         ProductId = product.Id,
-                        Product = product
+                        Product = product,
+                        CreatedAt = DateTime.Now,
+                        UpdatedAt = DateTime.Now
                     };
 
                     orderItems.Add(orderItem);
@@ -63,15 +64,11 @@ namespace Application.Orders
                 var subtotal = orderItems.Sum(item => item.Price * item.Quantity);
 
 
-                var orderInput = _mapper.Map<Order>(request.Order);
-
                 var order = new Order
                 {
-                    OrderDate = orderInput.OrderDate,
-                    ShippingAddress = orderInput.ShippingAddress,
-                    OrderStatus = orderInput.OrderStatus,
+                    ShippingAddress = request.Order.ShippingAddress,
                     TotalAmount = subtotal,
-                    CustomerId = orderInput.CustomerId,
+                    CustomerId = request.Order.CustomerId,
                     Items = orderItems
                 };
 

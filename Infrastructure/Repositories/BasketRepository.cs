@@ -40,7 +40,6 @@ namespace Infrastructure.Repositories
             if (existingItem != null)
             {
                 existingItem.Quantity += quantity;
-                product.StockLevel -= quantity;
             }
             else
             {
@@ -75,7 +74,6 @@ namespace Infrastructure.Repositories
 
             item.Quantity -= quantity;
 
-            product.StockLevel += quantity;
             if (item.Quantity <= 0)
             {
                 basket.Items.Remove(item);

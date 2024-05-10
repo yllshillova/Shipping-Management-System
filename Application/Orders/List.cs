@@ -13,7 +13,7 @@ namespace Application.Orders
         {
             public async Task<Result<IEnumerable<OrderDto>>> Handle(GetOrdersQuery request, CancellationToken cancellationToken)
             {
-                var orders = await _orderRepository.GetAllAsync();
+                var orders = await _orderRepository.GetAllAsync(o => o.Items);
                 if (orders is null || !orders.Any()) return Result<IEnumerable<OrderDto>>.Failure(ErrorType.NotFound, "No records could be found.");
 
                 var orderDtos = _mapper.Map<IEnumerable<OrderDto>>(orders);

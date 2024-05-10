@@ -1,11 +1,13 @@
 ﻿using Domain.Entities;
 using Domain.Entities.OrderAggregate;
 using Infrastructure.EntityConfiguration;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>
     {
         public DataContext(DbContextOptions options) : base(options) 
         {
@@ -13,7 +15,6 @@ namespace Infrastructure
         }
 
         public DbSet<Order> Orders { get; set; }
-        public DbSet<AppUser> Users { get; set; }
         public DbSet<Customer> Costumers { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Product> Products { get; set; }

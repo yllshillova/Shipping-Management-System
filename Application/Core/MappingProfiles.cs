@@ -1,4 +1,5 @@
-﻿using Application.Baskets;
+﻿using Application.Accounts.Users;
+using Application.Baskets;
 using Application.Costumers;
 using Application.Orders;
 using Application.Products;
@@ -26,6 +27,8 @@ namespace Application.Core
             CreateMap<Basket, BasketDto>()
               .ReverseMap(); 
             CreateMap<BasketItem, BasketItemDto>()
+              .ReverseMap();
+            CreateMap<AppUser, UserDto>()
               .ReverseMap();
         }
     }
