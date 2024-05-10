@@ -7,7 +7,7 @@ namespace Domain.Entities.OrderAggregate
     {
         public DateTime OrderDate { get; set; } = DateTime.Now;
         public string ShippingAddress { get; set; }
-        public OrderStatus OrderStatus { get; set; }
+        public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
         public Guid CustomerId { get; set; }
         public Customer Customer { get; set; }
         public List<OrderItem> Items { get; set; } = new();

@@ -15,7 +15,7 @@ namespace Application.Orders
             {
                 if (request.Id != Guid.Empty)
                 {
-                    var order = await _orderRepository.GetByIdAsync(request.Id);
+                    var order = await _orderRepository.GetOrderByIdAsync(request.Id);
                     if (order is null) return Result<OrderDto>.Failure(ErrorType.NotFound, "No records could be found.");
 
                     var orderDto = _mapper.Map<OrderDto>(order);

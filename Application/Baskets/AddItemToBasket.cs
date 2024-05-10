@@ -67,7 +67,9 @@ namespace Application.Baskets
                 return new Basket
                 {
                     EmployerId = employerId,
-                    Items = new List<BasketItem>()
+                    Items = new List<BasketItem>(),
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
                 };
             }
             private string GetEmployerId()

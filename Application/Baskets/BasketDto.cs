@@ -5,6 +5,6 @@ namespace Application.Baskets
     public class BasketDto : BaseEntityDto
     {
         public List<BasketItemDto> Items { get; set; } = new();
-        public string BuyerId { get; set; }
+        public string EmployerId { get; set; }
     }
 }

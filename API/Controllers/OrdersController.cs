@@ -1,4 +1,5 @@
 ﻿using Application.Orders;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using static Application.Orders.Create;
 using static Application.Orders.Delete;
@@ -10,12 +11,14 @@ namespace API.Controllers
 {
     public class OrdersController : BaseApiController
     {
+        [Authorize(Roles = "Admin,Manager,Employer")]
         [HttpGet]
         public async Task<IActionResult> GetOrders()
         {
             return HandleResult(await Mediator.Send(new GetOrdersQuery()));
         }
 
+        [Authorize(Roles = "Admin,Manager,Employer")]
         [HttpGet("{Id}")]
         public async Task<IActionResult> GetOrderById(Guid Id)
         {
@@ -23,19 +26,14 @@ namespace API.Controllers
         }
 
 
+        [Authorize(Roles = "Admin,Manager,Employer")]
         [HttpPost]
-        public async Task<IActionResult> CreateOrder(Guid basketId,OrderDto Order)
+        public async Task<IActionResult> CreateOrder(CreateOrderDto Order)
         {
-            return HandleResult(await Mediator.Send(new CreateOrderCommand(basketId,Order)));
+            return HandleResult(await Mediator.Send(new CreateOrderCommand(Order)));
         }
 
-        [HttpPut("{Id}")]
-        public async Task<IActionResult> EditOrder(Guid Id,[FromForm] OrderDto Order)
-        {
-            Order.Id = Id;
-            return HandleResult(await Mediator.Send(new UpdateOrderCommand(Order)));
-        }
-
+        [Authorize(Roles = "Admin,Manager")]
         [HttpDelete("{Id}")]
         public async Task<IActionResult> DeleteOrder(Guid Id)
         {
